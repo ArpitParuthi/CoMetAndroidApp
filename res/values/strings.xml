@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">A</string>
+    <string name="action_settings">Help</string>
+
+    <string-array name="categories">
+        <item>Semantic Web Group</item>
+        <item>E-Learning</item>
+        <item>Machine Learning Group</item>
+        <item>IS 3005 Group</item>
+        <item>Intelligent Systems Program</item>
+        <item>LERSAIS</item>
+        <item>Embedded System Design</item>
+        <item>e-museum</item>
+        <item>Information Retrieval</item>
+        <item>PAWS Group</item>
+        <item>Oakland Scene</item>
+        <item>Big Data</item>
+        <item>Information Science</item>
+        <item>CPAS-AIA</item>
+        <item>Human-Centered Computing</item>
+        <item>Social Computing</item>
+        <item>Computational/Systems Biology, Bioinformatics</item>
+        <item>Brain and Neuroscience</item>
+        <item>Engineering Experience</item>
+    </string-array>
+
+    <string name="title_activity_activity2">Activity2</string>
+    <string name="title_activity_activity3">Activity3</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
