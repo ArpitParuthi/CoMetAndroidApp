@@ -19,7 +19,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -83,45 +85,58 @@ public class Activity1 extends Activity  {
 			b2.setVisibility(View.VISIBLE);
 		}
 	}
-}
-
-class Imgur extends AsyncTask<String, Void, String> {
-
-	protected String doInBackground(String... params) {
-		String Image = params[0];
-		String key = "8ca9d84ac6bcf3a";
-		try {
-			URL url = new URL("https://api.imgur.com/3/image");
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			String da = URLEncoder.encode("image", "UTF-8") + "="
-	            + URLEncoder.encode(Image, "UTF-8");
-			conn.setDoOutput(true);
-			conn.setDoInput(true);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization", "Client-ID " + key);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type",
-	            "application/x-www-form-urlencoded");
-			conn.connect();
-			StringBuilder stb = new StringBuilder();
-			OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-			wr.write(da);
-			wr.flush();
-			BufferedReader rd = new BufferedReader(
-	            new InputStreamReader(conn.getInputStream()));
-			String line;
-			while ((line = rd.readLine()) != null) {
-				stb.append(line).append("\n");
-			}
-			wr.close();
-			rd.close();
-			JSONObject finalResult = new JSONObject(stb.toString());
-			String link = finalResult.getJSONObject("data").getString("link");
-			Log.e("URL:", link);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	} 	
-}
 	
+	class Imgur extends AsyncTask<String, Void, String> {
+
+		protected String doInBackground(String... params) {
+			String Image = params[0];
+			String key = "8ca9d84ac6bcf3a";
+			String urlLink = "";
+			try {
+				URL url = new URL("https://api.imgur.com/3/image");
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				String da = URLEncoder.encode("image", "UTF-8") + "="
+		            + URLEncoder.encode(Image, "UTF-8");
+				conn.setDoOutput(true);
+				conn.setDoInput(true);
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Authorization", "Client-ID " + key);
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Content-Type",
+		            "application/x-www-form-urlencoded");
+				conn.connect();
+				StringBuilder stb = new StringBuilder();
+				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+				wr.write(da);
+				wr.flush();
+				BufferedReader rd = new BufferedReader(
+		            new InputStreamReader(conn.getInputStream()));
+				String line;
+				while ((line = rd.readLine()) != null) {
+					stb.append(line).append("\n");
+				}
+				wr.close();
+				rd.close();
+				JSONObject finalResult = new JSONObject(stb.toString());
+				urlLink = finalResult.getJSONObject("data").getString("link");
+				Log.e("URL:", urlLink);
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			return urlLink;
+		}
+		
+		@Override
+	    protected void onPostExecute(String output) {
+
+				Intent intent = new Intent(Activity1.this, Activity2.class);
+				intent.putExtra("ImageURL", output);
+			    startActivity(intent);
+
+	    }
+	}
+		
+}
+
+

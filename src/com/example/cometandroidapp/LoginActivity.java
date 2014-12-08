@@ -29,13 +29,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 	
@@ -96,36 +99,71 @@ public class LoginActivity extends Activity {
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}	
-}
+	
+	class Comet extends AsyncTask<String, Void, String> {
 
-class Comet extends AsyncTask<String, Void, String> {
-
-	protected String doInBackground(String... params) {
-		String userEmail = params[0];
-		String password = params[1];
-		Log.e("email",userEmail);
-		try {
-			HttpClient http = new DefaultHttpClient();
-			HttpPost post = new HttpPost("http://halley.exp.sis.pitt.edu/comet/authentication/loginXML.jsp");
-			List<NameValuePair> ref = new ArrayList<NameValuePair>();
-			ref.add(new BasicNameValuePair("userEmail", userEmail));
-			ref.add(new BasicNameValuePair("password", password));
-			post.setEntity(new UrlEncodedFormEntity(ref,"UTF-8"));
-			HttpResponse response = http.execute(post);
-			HttpEntity entity = response.getEntity();
-			InputStream ios = null;
-			ios = entity.getContent();
-			String s = "";
-			BufferedReader buffer = new BufferedReader(new InputStreamReader(ios));
-			StringBuilder stb = new StringBuilder();
-			while((s = buffer.readLine())!=null) {
-				stb.append(s);
+		protected String doInBackground(String... params) {
+			String userEmail = params[0];
+			String password = params[1];
+			Log.e("email",userEmail);
+			StringBuilder stb=null;
+			try {
+				HttpClient http = new DefaultHttpClient();
+				HttpPost post = new HttpPost("http://halley.exp.sis.pitt.edu/comet/authentication/loginXML.jsp");
+				List<NameValuePair> ref = new ArrayList<NameValuePair>();
+				ref.add(new BasicNameValuePair("userEmail", userEmail));
+				ref.add(new BasicNameValuePair("password", password));
+				post.setEntity(new UrlEncodedFormEntity(ref,"UTF-8"));
+				HttpResponse response = http.execute(post);
+				HttpEntity entity = response.getEntity();
+				InputStream ios = null;
+				ios = entity.getContent();
+				String s = "";
+				BufferedReader buffer = new BufferedReader(new InputStreamReader(ios));
+				 stb = new StringBuilder();
+				while((s = buffer.readLine())!=null) {
+					stb.append(s);
+				}
+				ios.close();
+				Log.e("Returned",stb.toString());
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-			ios.close();
-			Log.e("Returned",stb.toString());
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-		} 	
+			return stb.toString();
+			} 	
+		
+		@Override
+	    protected void onPostExecute(String output) {
+	        
+			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
+
+				Intent intent = new Intent(LoginActivity.this, Activity1.class);
+			    startActivity(intent);
+				
+			}else{
+				
+				Context context = getApplicationContext();
+	    		 CharSequence text = "Please enter valid username or password";
+	    		 int duration = Toast.LENGTH_SHORT;
+	    		 
+	    		 //set position of error message to display
+	    		 DisplayMetrics metrics = new DisplayMetrics();
+	    		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
+	    		 int height = metrics.heightPixels;
+	    		 int width = metrics.widthPixels;
+
+	    		 //set the text and duration of alert message
+	    		 Toast toast = Toast.makeText(context, text, duration);
+	    		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 100 , height-600);
+	    		 toast.show();
+				
+			}
+			
+			
+	          
+	     
+	    }
+	}
+
 }
+
