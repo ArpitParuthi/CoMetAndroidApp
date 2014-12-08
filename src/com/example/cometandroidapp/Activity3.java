@@ -23,7 +23,7 @@ public class Activity3 extends Activity{
 	Bitmap bm;
 	ImageView iv1;
 	TimePickerFragment tpf;
-	EditText et2, et3, et4;
+	EditText et1, et2, et3, et4;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class Activity3 extends Activity{
 		bm = intent.getParcelableExtra("image");
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
+		et1 = (EditText)findViewById(R.id.editText1);
 		et2 = (EditText)findViewById(R.id.editText2);
 		et3 = (EditText)findViewById(R.id.editText3);
 		et4 = (EditText)findViewById(R.id.editText4);
