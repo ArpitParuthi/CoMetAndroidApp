@@ -3,13 +3,8 @@ package com.example.cometandroidapp;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,8 +13,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -34,7 +27,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,6 +37,7 @@ public class LoginActivity extends Activity {
 	EditText et1, et2;
 	TextView tv1;
 	Button login;
+	static String name;
 	
 	private boolean isNetworkAvailable() {
 	    ConnectivityManager connectivityManager 
@@ -82,7 +75,7 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				String name = et1.getText().toString();
+				name = et1.getText().toString();
 				String pass = et2.getText().toString();
 				new Comet().execute(name,pass);
 			}
@@ -138,30 +131,20 @@ public class LoginActivity extends Activity {
 			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
 
 				Intent intent = new Intent(LoginActivity.this, Activity1.class);
-			    startActivity(intent);
-				
+				intent.putExtra("detail",name);
+			    startActivity(intent);	
 			}else{
-				
-				Context context = getApplicationContext();
+				 Context context = getApplicationContext();
 	    		 CharSequence text = "Please enter valid username or password";
 	    		 int duration = Toast.LENGTH_SHORT;
-	    		 
-	    		 //set position of error message to display
 	    		 DisplayMetrics metrics = new DisplayMetrics();
 	    		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
 	    		 int height = metrics.heightPixels;
-	    		 int width = metrics.widthPixels;
-
 	    		 //set the text and duration of alert message
 	    		 Toast toast = Toast.makeText(context, text, duration);
 	    		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 100 , height-600);
-	    		 toast.show();
-				
+	    		 toast.show();			
 			}
-			
-			
-	          
-	     
 	    }
 	}
 
