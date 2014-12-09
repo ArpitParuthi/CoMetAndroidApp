@@ -30,7 +30,8 @@ public class Activity2 extends Activity implements OnClickListener {
 		Intent intent = getIntent();
 		byte[] byteArray = getIntent().getByteArrayExtra("image");
 		bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-		url = intent.getParcelableExtra("url");
+		url = intent.getStringExtra("url");
+		Log.e("url",url);
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
 		edit1=(EditText)findViewById(R.id.editText1);
@@ -41,8 +42,9 @@ public class Activity2 extends Activity implements OnClickListener {
 		Resources res = getResources();
 		spinner.setItems(res.getStringArray(R.array.categories));  
 	}
+	
 	public void PacelableMethod(){  
-	        Details detail = new Details(); 
+	        Details detail = new Details();
 	        detail.setUrl(url);
 	        detail.setSpeaker(edit1.getText().toString());
 	        detail.setCategory(spinner.getSelectedItemsAsString());
@@ -55,11 +57,11 @@ public class Activity2 extends Activity implements OnClickListener {
 	        mIntent.putExtra("image",bytes);
 	        mIntent.putExtras(mBundle);  
 	        startActivity(mIntent);  
-	    }
-		@Override
-		public void onClick(View v) {
+	}
+
+	public void onClick(View v) {
 			 PacelableMethod(); 
-		}  
+	}  
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity2, menu);
