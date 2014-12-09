@@ -30,7 +30,7 @@ public class Activity2 extends Activity implements OnClickListener {
 		Intent intent = getIntent();
 		byte[] byteArray = getIntent().getByteArrayExtra("image");
 		bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-		url = intent.getParcelableExtra("image");
+		url = intent.getParcelableExtra("url");
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
 		edit1=(EditText)findViewById(R.id.editText1);
