@@ -71,7 +71,6 @@ public class Activity1 extends Activity  {
 			b2.setVisibility(View.VISIBLE);
 			b2.setOnClickListener (new OnClickListener() {
 				public void onClick(View v) {
-					Log.e("url",url);
 					Intent intent = new Intent(Activity1.this,Activity2.class);
 					intent.putExtra("image", bytes);
 					intent.putExtra("url", url);

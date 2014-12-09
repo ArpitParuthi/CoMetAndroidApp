@@ -37,7 +37,7 @@ public class LoginActivity extends Activity {
 	EditText et1, et2;
 	TextView tv1;
 	Button login;
-	static String name;
+	static String email;
 	
 	private boolean isNetworkAvailable() {
 	    ConnectivityManager connectivityManager 
@@ -75,9 +75,9 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				name = et1.getText().toString();
+				email = et1.getText().toString();
 				String pass = et2.getText().toString();
-				new Comet().execute(name,pass);
+				new Comet().execute(email,pass);
 			}
 		});
 		}
@@ -98,7 +98,6 @@ public class LoginActivity extends Activity {
 		protected String doInBackground(String... params) {
 			String userEmail = params[0];
 			String password = params[1];
-			Log.e("email",userEmail);
 			StringBuilder stb=null;
 			try {
 				HttpClient http = new DefaultHttpClient();
@@ -131,7 +130,8 @@ public class LoginActivity extends Activity {
 			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
 
 				Intent intent = new Intent(LoginActivity.this, Activity1.class);
-				intent.putExtra("detail",name);
+				Talk talk = new Talk();
+				talk.setDetails(email);
 			    startActivity(intent);	
 			}else{
 				 Context context = getApplicationContext();

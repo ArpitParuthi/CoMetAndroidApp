@@ -3,7 +3,7 @@ package com.example.cometandroidapp;
 import android.os.Parcel;  
 import android.os.Parcelable;  
 
-	public class Details implements Parcelable {  
+	public class Talk implements Parcelable {  
 	    private String speaker;
 	    private String url;
 	    private String category;
@@ -12,6 +12,8 @@ import android.os.Parcelable;
 	    private String date;
 	    private String tfrom;
 	    private String tto;
+	    private String affiliation = "NA";
+	    private String details;
 	    
 	    public String getUrl() {  
 	    	return url;  
@@ -19,6 +21,14 @@ import android.os.Parcelable;
 	    
 	    public void setUrl(String url) {  
 	    	this.url = url;  
+	    }
+	    
+	    public String getDetails() {  
+	    	return url;  
+	    }  
+	    
+	    public void setDetails(String email) {  
+	    	this.details = "Posted by: " + email + "/n" + "Category: " + category ;  
 	    }
 	    
 	    public String getSpeaker() {  
@@ -77,10 +87,10 @@ import android.os.Parcelable;
 	   		  this.tto = tto;  
 	   	 }
 	   	 
-	     public static final Parcelable.Creator<Details> CREATOR = new Creator<Details>() {
+	     public static final Parcelable.Creator<Talk> CREATOR = new Creator<Talk>() {
 	    	 
-	    	 public Details createFromParcel(Parcel source) {  
-	    	     Details md = new Details();  
+	    	 public Talk createFromParcel(Parcel source) {  
+	    	     Talk md = new Talk();  
 	    	     md.speaker= source.readString();  
 	    	     md.category = source.readString(); 
 	    	     md.url = source.readString();
@@ -92,8 +102,8 @@ import android.os.Parcelable;
 	    	     return md;  
 	    	 }  
 	    	 
-	    	 public Details[] newArray(int size) {  
-	    	     return new Details[size];  
+	    	 public Talk[] newArray(int size) {  
+	    	     return new Talk[size];  
 	    	 }  
 	     };
 	     

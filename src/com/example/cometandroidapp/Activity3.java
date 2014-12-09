@@ -30,7 +30,7 @@ public class Activity3 extends Activity implements OnClickListener{
 	TimePickerFragment tpf;
 	EditText et1, et2, et3, et4;
 	Button btn;
-	public static String par ="com.example.cometandroidapp.Details";
+	public static String par ="com.example.cometandroidapp.Talk";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -113,14 +113,14 @@ public class Activity3 extends Activity implements OnClickListener{
 	}
 	
 	public void PacelableMethod(){  
-	       Details detail = new Details();  
-	        detail.setLocation(et1.getText().toString());
-	        detail.setDate(et2.getText().toString());
-	        detail.setTimeFrom(et3.getText().toString());
-	        detail.setTimeTo(et4.getText().toString());
+	        Talk talk = new Talk();  
+	        talk.setLocation(et1.getText().toString());
+	        talk.setDate(et2.getText().toString());
+	        talk.setTimeFrom(et3.getText().toString());
+	        talk.setTimeTo(et4.getText().toString());
 	        Intent mIntent = new Intent(this,Activity4.class);  
 	        Bundle mBundle = new Bundle();  
-	        mBundle.putParcelable(par, detail);  
+	        mBundle.putParcelable(par, talk);  
 	        mIntent.putExtras(mBundle);  
 	        startActivity(mIntent);  
 	    }

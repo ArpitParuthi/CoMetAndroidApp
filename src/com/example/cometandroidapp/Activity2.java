@@ -22,7 +22,7 @@ public class Activity2 extends Activity implements OnClickListener {
 	String url = "";
 	MultiSelectionSpinner spinner;
 	EditText edit1, edit2;
-	public static String par ="com.example.cometandroidapp.Details";
+	public static String par ="com.example.cometandroidapp.Talk";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,13 +44,13 @@ public class Activity2 extends Activity implements OnClickListener {
 	}
 	
 	public void PacelableMethod(){  
-	        Details detail = new Details();
-	        detail.setUrl(url);
-	        detail.setSpeaker(edit1.getText().toString());
-	        detail.setCategory(spinner.getSelectedItemsAsString());
+	        Talk talk= new Talk();
+	        talk.setUrl(url);
+	        talk.setSpeaker(edit1.getText().toString());
+	        talk.setCategory(spinner.getSelectedItemsAsString());
 	        Intent mIntent = new Intent(this,Activity3.class);  
 	        Bundle mBundle = new Bundle();  
-	        mBundle.putParcelable(par, detail);
+	        mBundle.putParcelable(par, talk);
 	        ByteArrayOutputStream stream = new ByteArrayOutputStream();
 	        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
 	        byte[] bytes = stream.toByteArray();

@@ -15,7 +15,7 @@ public class Activity4 extends Activity {
 		setContentView(R.layout.activity4);
 		
 		EditText et1=(EditText)findViewById(R.id.editText1);
-		Details md= (Details)getIntent().getParcelableExtra(Activity3.par);
+		Talk md= (Talk)getIntent().getParcelableExtra(Activity3.par);
 		et1.setText(md.getTimeFrom());
 	}
 
