@@ -4,6 +4,7 @@ int anim abc_slide_in_bottom 0x7f040002
 int anim abc_slide_in_top 0x7f040003
 int anim abc_slide_out_bottom 0x7f040004
 int anim abc_slide_out_top 0x7f040005
+int array buildings_array 0x7f0c0001
 int array categories 0x7f0c0000
 int attr actionBarDivider 0x7f01000f
 int attr actionBarItemBackground 0x7f010010
@@ -247,11 +248,12 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_settings 0x7f05004d
+int id action_settings 0x7f05004e
 int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
+int id autocomplete_buildings 0x7f050049
 int id beginning 0x7f050011
-int id button1 0x7f05004c
+int id button1 0x7f05004d
 int id checkbox 0x7f05002d
 int id collapseActionView 0x7f05000d
 int id default_activity_button 0x7f050028
@@ -260,8 +262,8 @@ int id disableHome 0x7f050008
 int id dropdown 0x7f05000f
 int id editText1 0x7f050043
 int id editText2 0x7f050045
-int id editText3 0x7f050049
-int id editText4 0x7f05004b
+int id editText3 0x7f05004a
+int id editText4 0x7f05004c
 int id edit_query 0x7f050030
 int id end 0x7f050013
 int id expand_activities_button 0x7f050026
@@ -308,7 +310,7 @@ int id take 0x7f05003e
 int id textView1 0x7f050042
 int id textView2 0x7f050044
 int id textView3 0x7f050046
-int id textView4 0x7f05004a
+int id textView4 0x7f05004b
 int id title 0x7f05002b
 int id top_action_bar 0x7f050020
 int id up 0x7f050021

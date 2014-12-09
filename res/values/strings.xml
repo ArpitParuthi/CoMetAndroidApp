@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="action_settings">Help</string>
     <string-array name="categories">
         <item>Semantic Web Group</item>
@@ -23,7 +22,86 @@
         <item>Brain and Neuroscience</item>
         <item>Engineering Experience</item>
     </string-array>
-
+    <string-array name="buildings_array">
+        <item>Alumni House</item>
+        <item>Art Park</item>
+        <item>Baker Hall (Dietrich)</item>
+        <item>Porter Hall</item>
+        <item>Bramer House</item>
+        <item>College of Fine Arts (CFA)</item>
+        <item>Cyert Hall</item>
+        <item>Doherty Hall</item>
+        <item>Facilities Management Services Building</item>
+        <item>Gates Center for Computer Science (SCS)</item>
+        <item>Hillman Center for Future-Generation Technologies (SCS)</item>
+        <item>Hamburg Hall (Heinz)</item>
+        <item>Hamerschlag Hall</item>
+        <item>Hunt Library</item>
+        <item>Integrated Innovation Institute (III)</item>
+        <item>Jared L. Cohon University Center</item>
+        <item>Margaret Morrison Carnegie Hall</item>
+        <item>Mellon Institute (MCS)</item>
+        <item>National Robotics Engineering Center* (NREC)</item>
+        <item>Newell-Simon Hall (SCS)</item>
+        <item>Pittsburgh Technology Center* (ETC)</item>
+        <item>Posner Center</item>
+        <item>Posner Hall (Tepper)</item>
+        <item>Purnell Center for the Arts</item>
+        <item>Rand Building</item>
+        <item>Roberts Engineering Hall</item>
+        <item>Robert Mehrabian Collaborative Innovation Center</item>
+        <item>Scaife Hall (Engineering)</item>
+        <item>Future Home of Sherman and Joyce Bowie Scott Hall</item>
+        <item>Skibo Gymnasium</item>
+        <item>Smith Hall</item>
+        <item>Software Engineering Institute (SEI)</item>
+        <item>Solar Decathlon House</item>
+        <item>Warner Hall (Office of Admission)</item>
+        <item>Wean Hall</item>
+        <item>Whitfield Hall (HR)</item>
+        <item>WQED Building</item>
+        <item>300 South Craig (Police)</item>
+        <item>311 South Craig</item>
+        <item>407 South Craig</item>
+        <item>4516 Henry (UTDC)</item>
+        <item>4609 Henry(Dietrich Labs)</item>
+        <item>4615 Forbes (GATF)</item>
+        <item>4616 Henry (INI)</item>
+        <item>6555 Penn</item>
+        <item>Allegheny Observatory</item>
+		<item>Allen Hall</item>
+		<item>Alumni Hall</item>
+		<item>Barco Law Building</item>
+		<item>Bellefield Hall</item>
+		<item>Benedum Hall</item>
+		<item>Cathedral of Learning</item>
+		<item>Chevron Science Center</item>
+		<item>Clapp Hall</item>
+		<item>Clapp/Langley</item>
+		<item>Crawford Complex</item>
+		<item>Crawford Hall</item>
+		<item>David Lawrence Hall</item>
+		<item>Eberly Hall</item>
+		<item>Forbes Tower</item>
+		<item>Frick Fine Arts Building</item>
+		<item>Gardner Steel Conference Center</item>
+		<item>Hillman Library</item>
+		<item>School of Information Sciences</item>
+		<item>Salwa al-Jassar</item>
+		<item>Langley Hall</item>
+		<item>Mervis Hall</item>
+		<item>Music Building</item>
+		<item>Old Engineering Hall</item>
+		<item>Parran Hall</item>
+		<item>Pittsburgh Technology Center</item>
+		<item>Salk Hall</item>
+		<item>Sennott Square</item>
+		<item>Thackeray Hall</item>
+		<item>Thaw Hall</item>
+		<item>Trees Hall</item>
+		<item>Applied Research Center</item>
+		<item>Wesley W. Posvar Hall</item>
+    </string-array>
     <string name="title_activity_activity2">Activity2</string>
     <string name="title_activity_activity3">Activity3</string>
     <string name="hello_world">Hello world!</string>

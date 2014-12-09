@@ -1,6 +1,7 @@
 package com.example.cometandroidapp;
 
 import java.util.Calendar;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -12,6 +13,8 @@ import android.graphics.Bitmap;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,10 +34,14 @@ public class Activity3 extends Activity{
 		bm = intent.getParcelableExtra("image");
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
-		et1 = (EditText)findViewById(R.id.editText1);
 		et2 = (EditText)findViewById(R.id.editText2);
 		et3 = (EditText)findViewById(R.id.editText3);
 		et4 = (EditText)findViewById(R.id.editText4);
+		
+		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_buildings);
+		String[] buildings = getResources().getStringArray(R.array.buildings_array);
+		ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, buildings);
+		textView.setAdapter(adapter);
 	}
 	
 	public void showDatePickerDialog(View v) {
