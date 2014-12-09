@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="action_settings">Help</string>
+
     <string-array name="categories">
         <item>Semantic Web Group</item>
         <item>E-Learning</item>
@@ -69,42 +71,45 @@
         <item>4616 Henry (INI)</item>
         <item>6555 Penn</item>
         <item>Allegheny Observatory</item>
-		<item>Allen Hall</item>
-		<item>Alumni Hall</item>
-		<item>Barco Law Building</item>
-		<item>Bellefield Hall</item>
-		<item>Benedum Hall</item>
-		<item>Cathedral of Learning</item>
-		<item>Chevron Science Center</item>
-		<item>Clapp Hall</item>
-		<item>Clapp/Langley</item>
-		<item>Crawford Complex</item>
-		<item>Crawford Hall</item>
-		<item>David Lawrence Hall</item>
-		<item>Eberly Hall</item>
-		<item>Forbes Tower</item>
-		<item>Frick Fine Arts Building</item>
-		<item>Gardner Steel Conference Center</item>
-		<item>Hillman Library</item>
-		<item>School of Information Sciences</item>
-		<item>Salwa al-Jassar</item>
-		<item>Langley Hall</item>
-		<item>Mervis Hall</item>
-		<item>Music Building</item>
-		<item>Old Engineering Hall</item>
-		<item>Parran Hall</item>
-		<item>Pittsburgh Technology Center</item>
-		<item>Salk Hall</item>
-		<item>Sennott Square</item>
-		<item>Thackeray Hall</item>
-		<item>Thaw Hall</item>
-		<item>Trees Hall</item>
-		<item>Applied Research Center</item>
-		<item>Wesley W. Posvar Hall</item>
+        <item>Allen Hall</item>
+        <item>Alumni Hall</item>
+        <item>Barco Law Building</item>
+        <item>Bellefield Hall</item>
+        <item>Benedum Hall</item>
+        <item>Cathedral of Learning</item>
+        <item>Chevron Science Center</item>
+        <item>Clapp Hall</item>
+        <item>Clapp/Langley</item>
+        <item>Crawford Complex</item>
+        <item>Crawford Hall</item>
+        <item>David Lawrence Hall</item>
+        <item>Eberly Hall</item>
+        <item>Forbes Tower</item>
+        <item>Frick Fine Arts Building</item>
+        <item>Gardner Steel Conference Center</item>
+        <item>Hillman Library</item>
+        <item>School of Information Sciences</item>
+        <item>Salwa al-Jassar</item>
+        <item>Langley Hall</item>
+        <item>Mervis Hall</item>
+        <item>Music Building</item>
+        <item>Old Engineering Hall</item>
+        <item>Parran Hall</item>
+        <item>Pittsburgh Technology Center</item>
+        <item>Salk Hall</item>
+        <item>Sennott Square</item>
+        <item>Thackeray Hall</item>
+        <item>Thaw Hall</item>
+        <item>Trees Hall</item>
+        <item>Applied Research Center</item>
+        <item>Wesley W. Posvar Hall</item>
     </string-array>
+
     <string name="title_activity_activity2">Activity2</string>
     <string name="title_activity_activity3">Activity3</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_login">A</string>
-	<string name="app_name">Activity1</string>
+    <string name="app_name">Activity1</string>
+    <string name="title_activity_activity4">Activity4</string>
+
 </resources>

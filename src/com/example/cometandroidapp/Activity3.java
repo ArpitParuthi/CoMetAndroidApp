@@ -13,20 +13,24 @@ import android.graphics.Bitmap;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
 
-public class Activity3 extends Activity{
+public class Activity3 extends Activity implements OnClickListener{
 	
 	Bitmap bm;
 	ImageView iv1;
 	TimePickerFragment tpf;
 	EditText et1, et2, et3, et4;
-
+	Button btn;
+	public static String par ="com.example.cometandroidapp.Details";
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity3);
@@ -42,6 +46,9 @@ public class Activity3 extends Activity{
 		String[] buildings = getResources().getStringArray(R.array.buildings_array);
 		ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, buildings);
 		textView.setAdapter(adapter);
+		
+		btn = (Button)findViewById(R.id.next);
+		btn.setOnClickListener(this);
 	}
 	
 	public void showDatePickerDialog(View v) {
@@ -105,6 +112,25 @@ public class Activity3 extends Activity{
 			et2.setText((month+1)+"/"+day+"/"+year);
 		}
 	}
+	
+	public void PacelableMethod(){  
+	       Details detail = new Details();  
+	        detail.setLocation(et1.getText().toString());
+	        detail.setDate(et2.getText().toString());
+	        detail.setTimeFrom(et3.getText().toString());
+	        detail.setTimeTo(et4.getText().toString());
+	        Intent mIntent = new Intent(this,Activity4.class);  
+	        Bundle mBundle = new Bundle();  
+	        mBundle.putParcelable(par, detail);  
+	        mIntent.putExtras(mBundle);  
+	        startActivity(mIntent);  
+	    }
+	
+	@Override
+	public void onClick(View v) {
+		PacelableMethod(); 
+	}
+
 }
 
 
