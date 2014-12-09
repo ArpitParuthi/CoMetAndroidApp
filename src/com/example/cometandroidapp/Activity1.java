@@ -9,19 +9,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import org.json.JSONObject;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,11 +25,10 @@ public class Activity1 extends Activity  {
 	
 	ImageView iv;
 	Bitmap bm;
-	
+	String url = "";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		
 			setContentView(R.layout.activity1);
 			iv = (ImageView)findViewById(R.id.imageView1);
@@ -49,13 +41,7 @@ public class Activity1 extends Activity  {
 			});
 			Button b2 = (Button) findViewById(R.id.next);
 			b2.setVisibility(View.GONE);
-			b2.setOnClickListener (new OnClickListener() {
-				public void onClick(View v) {
-					Intent intent = new Intent(Activity1.this,Activity2.class);
-					intent.putExtra("image",bm);
-					startActivity(intent);	
-				}
-			});
+			
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,11 +64,20 @@ public class Activity1 extends Activity  {
 			iv.setImageBitmap(bm);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();  
 			bm.compress(Bitmap.CompressFormat.PNG,100, baos);
-			byte[] b = baos.toByteArray();
-			String imageEncoded = Base64.encodeToString(b,Base64.DEFAULT);
+			final byte[] bytes = baos.toByteArray();
+			String imageEncoded = Base64.encodeToString(bytes,Base64.DEFAULT);
 			new Imgur().execute(imageEncoded);
 			Button b2 = (Button) findViewById(R.id.next);
 			b2.setVisibility(View.VISIBLE);
+			b2.setOnClickListener (new OnClickListener() {
+				public void onClick(View v) {
+					Log.e("url",url);
+					Intent intent = new Intent(Activity1.this,Activity2.class);
+					intent.putExtra("image", bytes);
+					intent.putExtra("url", url);
+					startActivity(intent);	
+				}
+			});
 		}
 	}
 	
@@ -119,7 +114,6 @@ public class Activity1 extends Activity  {
 				rd.close();
 				JSONObject finalResult = new JSONObject(stb.toString());
 				urlLink = finalResult.getJSONObject("data").getString("link");
-				Log.e("URL:", urlLink);
 				
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -129,11 +123,7 @@ public class Activity1 extends Activity  {
 		
 		@Override
 	    protected void onPostExecute(String output) {
-
-				Intent intent = new Intent(Activity1.this, Activity2.class);
-				intent.putExtra("ImageURL", output);
-			    startActivity(intent);
-
+				url = output;
 	    }
 	}
 		

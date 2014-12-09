@@ -10,6 +10,7 @@ import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.View;
@@ -34,19 +35,17 @@ public class Activity3 extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity3);
-		Intent intent = getIntent();
-		bm = intent.getParcelableExtra("image");
+		byte[] byteArray = getIntent().getByteArrayExtra("image");
+		bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
 		et2 = (EditText)findViewById(R.id.editText2);
 		et3 = (EditText)findViewById(R.id.editText3);
 		et4 = (EditText)findViewById(R.id.editText4);
-		
 		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_buildings);
 		String[] buildings = getResources().getStringArray(R.array.buildings_array);
 		ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, buildings);
 		textView.setAdapter(adapter);
-		
 		btn = (Button)findViewById(R.id.next);
 		btn.setOnClickListener(this);
 	}
