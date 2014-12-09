@@ -31,32 +31,11 @@ public class Activity1 extends Activity  {
 	ImageView iv;
 	Bitmap bm;
 	
-	private boolean isNetworkAvailable() {
-	    ConnectivityManager connectivityManager 
-	          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-	    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-	}
-
-	public void showAlertDialog(Context context, String title, String message, Boolean status) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle(title);
-        alertDialog.setMessage(message);
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-             finish();
-            }
-        });
-        alertDialog.show();
-	}
-
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		if(!isNetworkAvailable()){
-		    showAlertDialog(Activity1.this, "No Internet Connection!",
-                    "You don't have internet connection. Please switch on the internet connection and try again.", false);
-		} else {
+		
 			setContentView(R.layout.activity1);
 			iv = (ImageView)findViewById(R.id.imageView1);
 			Button b = (Button) findViewById(R.id.take);
@@ -75,7 +54,6 @@ public class Activity1 extends Activity  {
 					startActivity(intent);	
 				}
 			});
-		} 
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {

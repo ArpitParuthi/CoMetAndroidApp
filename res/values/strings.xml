@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">A</string>
     <string name="action_settings">Help</string>
-
     <string-array name="categories">
         <item>Semantic Web Group</item>
         <item>E-Learning</item>
@@ -29,5 +27,6 @@
     <string name="title_activity_activity2">Activity2</string>
     <string name="title_activity_activity3">Activity3</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="title_activity_login">A</string>
+	<string name="app_name">Activity1</string>
 </resources>
