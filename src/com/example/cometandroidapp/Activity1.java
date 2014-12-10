@@ -103,16 +103,6 @@ public class Activity1 extends Activity  {
 		
 	}
 
-	public void showAlertDialog(Context context, String title, String message, Boolean status) {
-		
-		 AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-		 alertDialog.setTitle("Help");
-		 alertDialog.setMessage("sdfdsfdsf");
-		 alertDialog.show();
-		
-		
-	}
-
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(resultCode == RESULT_OK) {
 			super.onActivityResult(requestCode, resultCode, data);
