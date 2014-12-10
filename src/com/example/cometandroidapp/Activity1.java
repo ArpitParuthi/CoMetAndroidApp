@@ -29,7 +29,8 @@ import android.view.WindowManager;
 import android.widget.*;
 
 public class Activity1 extends Activity  {
-	
+	Talk TALK_OBJECT;
+	public final static String OBJECT = "com.example.cometandroidapp.object1";
 	ImageView iv;
 	Bitmap bm;
 	String url = "";
@@ -48,7 +49,7 @@ public class Activity1 extends Activity  {
 			});
 			Button b2 = (Button) findViewById(R.id.next);
 			b2.setVisibility(View.GONE);
-			
+			TALK_OBJECT = (Talk)getIntent().getParcelableExtra(LoginActivity.OBJECT);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,6 +135,7 @@ public class Activity1 extends Activity  {
 				public void onClick(View v) {
 					Intent intent = new Intent(Activity1.this,Activity2.class);
 					intent.putExtra("image", bytes);
+					intent.putExtra(OBJECT, TALK_OBJECT);
 					startActivity(intent);	
 				}
 			});
@@ -183,8 +185,7 @@ public class Activity1 extends Activity  {
 		@Override
 	    protected void onPostExecute(String output) {
 				url = output;
-				Talk talk= new Talk();
-		        talk.setUrl(url);
+		        TALK_OBJECT.setUrl(url);
 	    }
 	}
 	

@@ -36,7 +36,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
-	
+    Talk TALK_OBJECT=new Talk();
+	public final static String OBJECT = "com.example.cometandroidapp.object";
 	EditText et1, et2;
 	TextView tv1;
 	Button login;
@@ -183,12 +184,9 @@ public class LoginActivity extends Activity {
 	        
 			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
 
-				Talk talk = new Talk();
-				talk.setDetails(email);
+				TALK_OBJECT.setEmail(email);
 			    Intent intent = new Intent(LoginActivity.this, Activity1.class);
-		        Bundle mBundle = new Bundle();  
-		        mBundle.putParcelable(par, talk);  
-		        intent.putExtras(mBundle);  
+			    intent.putExtra(OBJECT, TALK_OBJECT);
 		        startActivity(intent);
 			}else{
 				 Context context = getApplicationContext();

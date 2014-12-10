@@ -39,7 +39,8 @@ public class Activity3 extends Activity implements OnClickListener{
 	EditText et2, et3, et4;
 	AutoCompleteTextView ac1;
 	Button btn, prev;
-	public static String par ="com.example.cometandroidapp.Talk";
+	Talk TALK_OBJECT;
+	public final static String OBJECT = "com.example.cometandroidapp.object3";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,7 +49,6 @@ public class Activity3 extends Activity implements OnClickListener{
 		bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
-		
 		et2 = (EditText)findViewById(R.id.editText2);
 		et3 = (EditText)findViewById(R.id.editText3);
 		et4 = (EditText)findViewById(R.id.editText4);
@@ -68,6 +68,8 @@ public class Activity3 extends Activity implements OnClickListener{
 	            return;
 			}
 		}); 
+		TALK_OBJECT = (Talk)getIntent().getParcelableExtra(Activity2.OBJECT);
+		
 	}
 	
 	public void showDatePickerDialog(View v) {
@@ -194,17 +196,14 @@ public class Activity3 extends Activity implements OnClickListener{
 		}
 	}
 	
-	public void PacelableMethod(){  
-	        Talk talk = new Talk();  
-	        talk.setLocation(ac1.getText().toString());
-	        talk.setDate(et2.getText().toString());
-	        talk.setTimeFrom(et3.getText().toString());
-	        talk.setTimeTo(et4.getText().toString());
-	        Intent mIntent = new Intent(Activity3.this,Activity4.class);  
-	        Bundle mBundle = new Bundle();  
-	        mBundle.putParcelable(par, talk);  
-	        mIntent.putExtras(mBundle);  
-	        startActivity(mIntent);  
+	public void PacelableMethod(){  	
+		TALK_OBJECT.setLocation(ac1.getText().toString());
+		TALK_OBJECT.setDate(et2.getText().toString());
+		TALK_OBJECT.setTimeFrom(et3.getText().toString());
+		TALK_OBJECT.setTimeTo(et4.getText().toString());
+	    Intent intent = new Intent(Activity3.this,Activity4.class); 
+	    intent.putExtra(OBJECT, TALK_OBJECT);
+	    startActivity(intent);  
 	    }
 	
 	@Override

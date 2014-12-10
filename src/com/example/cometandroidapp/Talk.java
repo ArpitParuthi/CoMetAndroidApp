@@ -13,7 +13,7 @@ import android.os.Parcelable;
 	    private String tfrom;
 	    private String tto;
 	    private String affiliation = "NA";
-	    private String details;
+	    private String email;
 	    
 	    public String getUrl() {  
 	    	return url;  
@@ -23,12 +23,12 @@ import android.os.Parcelable;
 	    	this.url = url;  
 	    }
 	    
-	    public String getDetails() {  
-	    	return details;  
+	    public String getEmail() {  
+	    	return email;  
 	    }  
 	    
-	    public void setDetails(String email) {  
-	    	this.details = "Posted by: " + email + "/n" + "Category: " + this.category ;  
+	    public void setEmail(String email) {  
+	    	this.email = email; 
 	    }
 	    
 	    public String getSpeaker() {  
@@ -76,7 +76,7 @@ import android.os.Parcelable;
 	   	 }  
 	   	 
 	   	 public void setTimeFrom(String tfrom) {  
-	   		 this.tfrom = formatetime(tfrom); 
+	   		 this.tfrom = formatTime(tfrom); 
 	   	 }
 	   			    
 		 public String getTimeTo() {  
@@ -84,7 +84,7 @@ import android.os.Parcelable;
 	   	 }  
 		 
 	   	 public void setTimeTo( String tto) {  
-	   		  this.tto = tto;  
+	   		  this.tto = formatTime(tto);  
 	   	 }
 	   	 
 	     public static final Parcelable.Creator<Talk> CREATOR = new Creator<Talk>() {
@@ -99,7 +99,7 @@ import android.os.Parcelable;
 	    	     md.date= source.readString();  
 	    	     md.tfrom = source.readString(); 
 	    	     md.tto= source.readString(); 
-	    	     md.details=source.readString();
+	    	     md.email=source.readString();
 	    	     return md;  
 	    	 }  
 	    	 
@@ -122,10 +122,10 @@ import android.os.Parcelable;
 			 parcel.writeString(date);  
 			 parcel.writeString(tfrom);
 			 parcel.writeString(tto); 
-			 parcel.writeString(details);
+			 parcel.writeString(email);
 		} 
 
-		 private String formatetime(String time) {
+		 private String formatTime(String time) {
 			 String ret = null;
 			 String[] splitString = time.split(":");
 			 int hour = Integer.parseInt(splitString[0]);

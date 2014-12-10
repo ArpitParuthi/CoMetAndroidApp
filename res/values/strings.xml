@@ -2,9 +2,10 @@
 <resources>
 
     <string name="action_settings">Help</string>
-        <string name="about">About</string>
-        <string name="logout">Log Out</string>
-
+    <string name="about">About</string>
+    <string name="logout">Log Out</string>
+     <string name="login">Login with CoMeT</string>
+    <string name="anonymous"><u>Or, click here to post as anonymous</u></string>  
     <string-array name="categories">
         <item>Semantic Web Group</item>
         <item>E-Learning</item>

@@ -28,7 +28,8 @@ public class Activity2 extends Activity implements OnClickListener {
 	ImageView iv1;
 	MultiSelectionSpinner spinner;
 	EditText edit1, edit2;
-	public static String par ="com.example.cometandroidapp.Talk";
+	Talk TALK_OBJECT;
+	public final static String OBJECT = "com.example.cometandroidapp.object2";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,21 +45,23 @@ public class Activity2 extends Activity implements OnClickListener {
 		spinner = (MultiSelectionSpinner) findViewById(R.id.mySpinner1); 
 		Resources res = getResources();
 		spinner.setItems(res.getStringArray(R.array.categories));  
+		TALK_OBJECT = (Talk)getIntent().getParcelableExtra(Activity1.OBJECT);
 	}
 	
 	public void PacelableMethod(){  
-	        Talk talk= new Talk();
-	        talk.setSpeaker(edit1.getText().toString());
-	        talk.setCategory(spinner.getSelectedItemsAsString());
-	        Intent mIntent = new Intent(this,Activity3.class);  
-	        Bundle mBundle = new Bundle();  
-	        mBundle.putParcelable(par, talk);
+			TALK_OBJECT.setSpeaker(edit1.getText().toString());
+			TALK_OBJECT.setTalkTitle(edit2.getText().toString());
+			TALK_OBJECT.setCategory(spinner.getSelectedItemsAsString());
+			Log.e("speaker",TALK_OBJECT.getSpeaker());
+			Log.e("title",TALK_OBJECT.getTalkTitle());
+			Log.e("category",TALK_OBJECT.getCategory());
+	        Intent intent = new Intent(this,Activity3.class);   
 	        ByteArrayOutputStream stream = new ByteArrayOutputStream();
 	        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
 	        byte[] bytes = stream.toByteArray();
-	        mIntent.putExtra("image",bytes);
-	        mIntent.putExtras(mBundle);  
-	        startActivity(mIntent);  
+	        intent.putExtra("image",bytes); 
+	        intent.putExtra(OBJECT, TALK_OBJECT);
+	        startActivity(intent);  
 	}
 
 	public void onClick(View v) {
@@ -108,12 +111,8 @@ public class Activity2 extends Activity implements OnClickListener {
 			
 			
 		}else{
-			
 			PacelableMethod(); 
-			
-		}
-		
-			 
+		}	 
 	}  
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -143,8 +142,6 @@ public class Activity2 extends Activity implements OnClickListener {
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 		return;
-		
-		
 	}
 
 	
@@ -184,8 +181,7 @@ public class Activity2 extends Activity implements OnClickListener {
 		
 	}
 	
-public void onBackPressed(){
-		
+public void onBackPressed(){	
 		return;
 	}
 }
