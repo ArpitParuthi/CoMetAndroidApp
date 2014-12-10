@@ -24,11 +24,11 @@ import android.os.Parcelable;
 	    }
 	    
 	    public String getDetails() {  
-	    	return url;  
+	    	return details;  
 	    }  
 	    
 	    public void setDetails(String email) {  
-	    	this.details = "Posted by: " + email + "/n" + "Category: " + category ;  
+	    	this.details = "Posted by: " + email + "/n" + "Category: " + this.category ;  
 	    }
 	    
 	    public String getSpeaker() {  
