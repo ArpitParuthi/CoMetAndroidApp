@@ -28,7 +28,8 @@ public class Activity3 extends Activity implements OnClickListener{
 	Bitmap bm;
 	ImageView iv1;
 	TimePickerFragment tpf;
-	EditText et1, et2, et3, et4;
+	EditText et2, et3, et4;
+	AutoCompleteTextView ac1;
 	Button btn;
 	public static String par ="com.example.cometandroidapp.Talk";
 	
@@ -42,10 +43,10 @@ public class Activity3 extends Activity implements OnClickListener{
 		et2 = (EditText)findViewById(R.id.editText2);
 		et3 = (EditText)findViewById(R.id.editText3);
 		et4 = (EditText)findViewById(R.id.editText4);
-		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_buildings);
+		ac1 = (AutoCompleteTextView) findViewById(R.id.autocomplete_buildings);
 		String[] buildings = getResources().getStringArray(R.array.buildings_array);
 		ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, buildings);
-		textView.setAdapter(adapter);
+		ac1.setAdapter(adapter);
 		btn = (Button)findViewById(R.id.next);
 		btn.setOnClickListener(this);
 	}
@@ -114,11 +115,11 @@ public class Activity3 extends Activity implements OnClickListener{
 	
 	public void PacelableMethod(){  
 	        Talk talk = new Talk();  
-	        talk.setLocation(et1.getText().toString());
+	        talk.setLocation(ac1.getText().toString());
 	        talk.setDate(et2.getText().toString());
 	        talk.setTimeFrom(et3.getText().toString());
 	        talk.setTimeTo(et4.getText().toString());
-	        Intent mIntent = new Intent(this,Activity4.class);  
+	        Intent mIntent = new Intent(Activity3.this,Activity4.class);  
 	        Bundle mBundle = new Bundle();  
 	        mBundle.putParcelable(par, talk);  
 	        mIntent.putExtras(mBundle);  
