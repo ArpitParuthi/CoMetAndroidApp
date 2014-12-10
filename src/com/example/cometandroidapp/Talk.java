@@ -98,7 +98,8 @@ import android.os.Parcelable;
 	    	     md.loc = source.readString(); 
 	    	     md.date= source.readString();  
 	    	     md.tfrom = source.readString(); 
-	    	     md.tto= source.readString();  
+	    	     md.tto= source.readString(); 
+	    	     md.details=source.readString();
 	    	     return md;  
 	    	 }  
 	    	 
@@ -120,7 +121,8 @@ import android.os.Parcelable;
 			 parcel.writeString(loc);
 			 parcel.writeString(date);  
 			 parcel.writeString(tfrom);
-			 parcel.writeString(tto);  	
+			 parcel.writeString(tto); 
+			 parcel.writeString(details);
 		} 
 
 		 private String formatetime(String time) {

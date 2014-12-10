@@ -41,7 +41,7 @@ public class LoginActivity extends Activity {
 	TextView tv1;
 	Button login;
 	String email = "pittcomet@gmail.com";
-	
+	public static String par ="com.example.cometandroidapp.Talk";
 	private boolean isNetworkAvailable() {
 	    ConnectivityManager connectivityManager 
 	          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -111,7 +111,7 @@ public class LoginActivity extends Activity {
 		// TODO Auto-generated method stub
 		new AlertDialog.Builder(this)
 		.setTitle("About")
-		.setMessage("Develpers: Arpit, Jasmin, Vivek, Somi")
+		.setMessage("Develpers: Arpit, Jasmin, Somi, Vivek")
 		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -183,10 +183,13 @@ public class LoginActivity extends Activity {
 	        
 			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
 
-				Intent intent = new Intent(LoginActivity.this, Activity1.class);
 				Talk talk = new Talk();
 				talk.setDetails(email);
-			    startActivity(intent);	
+			    Intent intent = new Intent(LoginActivity.this, Activity1.class);
+		        Bundle mBundle = new Bundle();  
+		        mBundle.putParcelable(par, talk);  
+		        intent.putExtras(mBundle);  
+		        startActivity(intent);
 			}else{
 				 Context context = getApplicationContext();
 	    		 CharSequence text = "Please enter valid username or password";

@@ -1,6 +1,7 @@
 package com.example.cometandroidapp;
 
 import java.util.Calendar;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +48,7 @@ public class Activity3 extends Activity implements OnClickListener{
 		bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
+		
 		et2 = (EditText)findViewById(R.id.editText2);
 		et3 = (EditText)findViewById(R.id.editText3);
 		et4 = (EditText)findViewById(R.id.editText4);
