@@ -71,12 +71,11 @@ public class Activity1 extends Activity  {
 		// TODO Auto-generated method stub
 		new AlertDialog.Builder(this)
 		.setTitle("Help")
-		.setMessage("With this app you can post an event to CoMeT! Here's how:\n"
-				+ "1. Login with your CoMeT account or post as an anonymous user\n"
-				+ "2. Take a picture\n"
-				+ "3. Add details about the Event\n"
-				+ "4. Post it to the CoMeT server\n"
-				+ "5. Receive a confirmation")
+		.setMessage("On this page, you can:\n"
+				+ "1. Take a picture\n"
+				+ "2. Retake it if you wish to\n"
+				+ "3. A next button will appear once you take a picture to go the next page\n"
+				+ "4. Your image will be posted onto a server\n")
 		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
 			
 			@Override

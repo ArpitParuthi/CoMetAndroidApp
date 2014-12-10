@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -13,6 +14,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -26,6 +28,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,15 +86,64 @@ public class LoginActivity extends Activity {
 		}
 	}
 	
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+	     super.onOptionsItemSelected(item);
+	     switch(item.getItemId()){
+	     case R.id.about:
+	    	 aboutMenuitem();
+	    	 break;
+	     case R.id.action_settings:
+	    	 actionsettings();
+	    	 break;
+	     }   
+		return true;
+	}
+	
+	private void aboutMenuitem() {
+		// TODO Auto-generated method stub
+		new AlertDialog.Builder(this)
+		.setTitle("About")
+		.setMessage("Develpers: Arpit, Jasmin, Vivek, Somi")
+		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		}).show(); 
+		
+	}
+	
+	private void actionsettings() {
+		// TODO Auto-generated method stub
+		new AlertDialog.Builder(this)
+		.setTitle("Help")
+		.setMessage("With this app you can post an event to CoMeT! Here's how:\n"
+				+ "1. Login with your CoMeT account or post as an anonymous user\n"
+				+ "2. Take a picture\n"
+				+ "3. Add details about the Event\n"
+				+ "4. Post it to the CoMeT server\n"
+				+ "5. Receive a confirmation")
+		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		}).show(); 
+		
+	}
+	
 	public void fetch(View v) {
 		new Comet().execute("pittcomet@gmail.com","anonymoususer");
 	}
-	
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.login, menu);
-		return true;
-	}	
 	
 	class Comet extends AsyncTask<String, Void, String> {
 
