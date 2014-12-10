@@ -3,6 +3,7 @@
 
     <string name="action_settings">Help</string>
         <string name="about">About</string>
+        <string name="logout">Log Out</string>
 
     <string-array name="categories">
         <item>Semantic Web Group</item>

@@ -65,6 +65,9 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		
+		//if below condition true then user wants to close the application
+      
 		if(!isNetworkAvailable()){
 		    showAlertDialog(LoginActivity.this, "No Internet Connection!",
                     "You don't have internet connection. Please switch on the internet connection and try again.", false);

@@ -9,11 +9,14 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.format.DateFormat;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +28,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class Activity3 extends Activity implements OnClickListener{
 	
@@ -89,8 +93,21 @@ public class Activity3 extends Activity implements OnClickListener{
 	     case R.id.action_settings:
 	    	 actionsettings();
 	    	 break;
+	     case R.id.logout:
+	    	 logout();
+	    	 break;
 	     }   
 		return true;
+	}
+	
+	private void logout(){
+		
+		Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		return;
+		
+		
 	}
 	
 	private void actionsettings() {
@@ -180,7 +197,76 @@ public class Activity3 extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		PacelableMethod(); 
+		
+		if(ac1.getText().toString().trim().equals("")){
+			
+			 Context context = getApplicationContext();
+   		 CharSequence text = "Please enter valid location";
+   		 int duration = Toast.LENGTH_SHORT;
+   		 DisplayMetrics metrics = new DisplayMetrics();
+   		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
+   		 int height = metrics.heightPixels;
+   		 //set the text and duration of alert message
+   		 Toast toast = Toast.makeText(context, text, duration);
+   		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 200 , height-900);
+   		 toast.show();
+   		 return;
+   		 
+		}else if(et2.getText().toString().trim().equals("")){
+			
+		 Context context = getApplicationContext();
+  		 CharSequence text = "Please select valid date";
+  		 int duration = Toast.LENGTH_SHORT;
+  		 DisplayMetrics metrics = new DisplayMetrics();
+  		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
+  		 int height = metrics.heightPixels;
+  		 //set the text and duration of alert message
+  		 Toast toast = Toast.makeText(context, text, duration);
+  		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 250 , height-900);
+  		 toast.show();
+  		 return;
+			
+			
+		}else if(et3.getText().toString().trim().equals("")){
+			
+			 Context context = getApplicationContext();
+	   		 CharSequence text = "Please enter start time of talk";
+	   		 int duration = Toast.LENGTH_SHORT;
+	   		 DisplayMetrics metrics = new DisplayMetrics();
+	   		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
+	   		 int height = metrics.heightPixels;
+	   		 //set the text and duration of alert message
+	   		 Toast toast = Toast.makeText(context, text, duration);
+	   		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 175 , height-900);
+	   		 toast.show();
+	   		 return;
+			
+			
+		}else if(et4.getText().toString().trim().equals("")){
+			
+			 Context context = getApplicationContext();
+	   		 CharSequence text = "Please enter end time of talk";
+	   		 int duration = Toast.LENGTH_SHORT;
+	   		 DisplayMetrics metrics = new DisplayMetrics();
+	   		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
+	   		 int height = metrics.heightPixels;
+	   		 //set the text and duration of alert message
+	   		 Toast toast = Toast.makeText(context, text, duration);
+	   		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 175 , height-900);
+	   		 toast.show();
+	   		 return;
+			
+			
+		}else{
+			
+			PacelableMethod(); 
+			
+		}
+	}
+	
+public void onBackPressed(){
+		
+		return;
 	}
 
 }

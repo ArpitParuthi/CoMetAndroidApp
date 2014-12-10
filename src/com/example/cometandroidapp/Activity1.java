@@ -9,7 +9,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,10 +19,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.*;
 
 public class Activity1 extends Activity  {
@@ -63,6 +64,9 @@ public class Activity1 extends Activity  {
 	     case R.id.action_settings:
 	    	 actionsettings();
 	    	 break;
+	     case R.id.logout:
+	    	 logout();
+	    	 break;
 	     }   
 		return true;
 	}
@@ -84,6 +88,16 @@ public class Activity1 extends Activity  {
 				
 			}
 		}).show(); 
+		
+	}
+	
+	private void logout(){
+		
+		Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		return;
+		
 		
 	}
 
@@ -171,7 +185,13 @@ public class Activity1 extends Activity  {
 				url = output;
 	    }
 	}
+	
+	
+	public void onBackPressed(){
 		
+		return;
+	}
+	
 }
 
 
