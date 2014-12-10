@@ -40,7 +40,7 @@ public class LoginActivity extends Activity {
 	EditText et1, et2;
 	TextView tv1;
 	Button login;
-	static String email;
+	String email = "pittcomet@gmail.com";
 	
 	private boolean isNetworkAvailable() {
 	    ConnectivityManager connectivityManager 
@@ -151,14 +151,14 @@ public class LoginActivity extends Activity {
 	class Comet extends AsyncTask<String, Void, String> {
 
 		protected String doInBackground(String... params) {
-			String userEmail = params[0];
+			email = params[0];
 			String password = params[1];
 			StringBuilder stb=null;
 			try {
 				HttpClient http = new DefaultHttpClient();
 				HttpPost post = new HttpPost("http://halley.exp.sis.pitt.edu/comet/authentication/loginXML.jsp");
 				List<NameValuePair> ref = new ArrayList<NameValuePair>();
-				ref.add(new BasicNameValuePair("userEmail", userEmail));
+				ref.add(new BasicNameValuePair("userEmail", email));
 				ref.add(new BasicNameValuePair("password", password));
 				post.setEntity(new UrlEncodedFormEntity(ref,"UTF-8"));
 				HttpResponse response = http.execute(post);
@@ -172,7 +172,6 @@ public class LoginActivity extends Activity {
 					stb.append(s);
 				}
 				ios.close();
-				Log.e("Returned",stb.toString());
 			} catch(Exception e) {
 				e.printStackTrace();
 			}

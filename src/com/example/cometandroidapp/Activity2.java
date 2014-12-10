@@ -26,7 +26,6 @@ import android.widget.Toast;
 public class Activity2 extends Activity implements OnClickListener {
 	Bitmap bm;
 	ImageView iv1;
-	String url = "";
 	MultiSelectionSpinner spinner;
 	EditText edit1, edit2;
 	public static String par ="com.example.cometandroidapp.Talk";
@@ -34,11 +33,8 @@ public class Activity2 extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity2);
-		Intent intent = getIntent();
 		byte[] byteArray = getIntent().getByteArrayExtra("image");
 		bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-		url = intent.getStringExtra("url");
-		Log.e("url",url);
 		iv1 = (ImageView)findViewById(R.id.iv1);
 		iv1.setImageBitmap(bm);
 		edit1=(EditText)findViewById(R.id.editText1);
@@ -52,7 +48,6 @@ public class Activity2 extends Activity implements OnClickListener {
 	
 	public void PacelableMethod(){  
 	        Talk talk= new Talk();
-	        talk.setUrl(url);
 	        talk.setSpeaker(edit1.getText().toString());
 	        talk.setCategory(spinner.getSelectedItemsAsString());
 	        Intent mIntent = new Intent(this,Activity3.class);  

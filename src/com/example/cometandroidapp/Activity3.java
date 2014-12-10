@@ -1,7 +1,6 @@
 package com.example.cometandroidapp;
 
 import java.util.Calendar;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -37,7 +36,7 @@ public class Activity3 extends Activity implements OnClickListener{
 	TimePickerFragment tpf;
 	EditText et2, et3, et4;
 	AutoCompleteTextView ac1;
-	Button btn;
+	Button btn, prev;
 	public static String par ="com.example.cometandroidapp.Talk";
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +55,16 @@ public class Activity3 extends Activity implements OnClickListener{
 		ac1.setAdapter(adapter);
 		btn = (Button)findViewById(R.id.next);
 		btn.setOnClickListener(this);
+		prev = (Button)findViewById(R.id.previous);
+		prev.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				onBackPressed();
+	            return;
+			}
+		}); 
 	}
 	
 	public void showDatePickerDialog(View v) {
@@ -186,8 +195,8 @@ public class Activity3 extends Activity implements OnClickListener{
 	        Talk talk = new Talk();  
 	        talk.setLocation(ac1.getText().toString());
 	        talk.setDate(et2.getText().toString());
-	       talk.setTimeFrom(et3.getText().toString());
-	       talk.setTimeTo(et4.getText().toString());
+	        talk.setTimeFrom(et3.getText().toString());
+	        talk.setTimeTo(et4.getText().toString());
 	        Intent mIntent = new Intent(Activity3.this,Activity4.class);  
 	        Bundle mBundle = new Bundle();  
 	        mBundle.putParcelable(par, talk);  
@@ -200,7 +209,7 @@ public class Activity3 extends Activity implements OnClickListener{
 		
 		if(ac1.getText().toString().trim().equals("")){
 			
-			 Context context = getApplicationContext();
+		 Context context = getApplicationContext();
    		 CharSequence text = "Please enter valid location";
    		 int duration = Toast.LENGTH_SHORT;
    		 DisplayMetrics metrics = new DisplayMetrics();
@@ -264,11 +273,6 @@ public class Activity3 extends Activity implements OnClickListener{
 		}
 	}
 	
-public void onBackPressed(){
-		
-		return;
-	}
-
 }
 
 

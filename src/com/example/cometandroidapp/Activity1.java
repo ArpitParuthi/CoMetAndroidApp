@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -133,7 +134,6 @@ public class Activity1 extends Activity  {
 				public void onClick(View v) {
 					Intent intent = new Intent(Activity1.this,Activity2.class);
 					intent.putExtra("image", bytes);
-					intent.putExtra("url", url);
 					startActivity(intent);	
 				}
 			});
@@ -183,6 +183,8 @@ public class Activity1 extends Activity  {
 		@Override
 	    protected void onPostExecute(String output) {
 				url = output;
+				Talk talk= new Talk();
+		        talk.setUrl(url);
 	    }
 	}
 	
