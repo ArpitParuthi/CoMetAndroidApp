@@ -21,6 +21,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -31,6 +33,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Activity4 extends Activity {
@@ -79,6 +82,10 @@ public class Activity4 extends Activity {
 		return;	
 	}
 	
+	public void open() {
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(TALK_OBJECT.getUrl()));
+		startActivity(browserIntent);
+	}
 		
 	class NewTalk extends AsyncTask<String, Void, String> {
 
@@ -133,7 +140,16 @@ public class Activity4 extends Activity {
 	    	protected void onPostExecute(String output) {
 				Log.e("Output: ", output);
 				if(output.substring(75,output.length()-23).substring(0,7).equals("SUCCESS")) {
-					tv1.setText("Your talk has been posted successfully!");
+					tv1.setText("Your talk has been posted successfully! Here's the image you uploaded: ");
+					tv1.setTextColor(Color.RED);
+					tv1.append(TALK_OBJECT.getUrl());
+					tv1.setClickable(true);
+					tv1.setOnClickListener(new OnClickListener() {
+						public void onClick(View v) {
+							Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(TALK_OBJECT.getUrl()));
+							startActivity(browserIntent);
+						}
+					});
 				}
 				else
 					tv1.setText("There was a problem posting your talk, please try again!");
