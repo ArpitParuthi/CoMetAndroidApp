@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Activity4 extends Activity {
 
@@ -12,10 +13,10 @@ public class Activity4 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity4);
+		TextView tv= (TextView)findViewById(R.id.textView2);
+		Talk talk = (Talk)getIntent().
 		
-		EditText et1=(EditText)findViewById(R.id.editText1);
-		Talk md= (Talk)getIntent().getParcelableExtra(Activity3.par);
-		et1.setText(md.getTimeFrom());
+		
 	}
 
 	@Override
