@@ -52,9 +52,6 @@ public class Activity2 extends Activity implements OnClickListener {
 			TALK_OBJECT.setSpeaker(edit1.getText().toString());
 			TALK_OBJECT.setTalkTitle(edit2.getText().toString());
 			TALK_OBJECT.setCategory(spinner.getSelectedItemsAsString());
-			Log.e("speaker",TALK_OBJECT.getSpeaker());
-			Log.e("title",TALK_OBJECT.getTalkTitle());
-			Log.e("category",TALK_OBJECT.getCategory());
 	        Intent intent = new Intent(this,Activity3.class);   
 	        ByteArrayOutputStream stream = new ByteArrayOutputStream();
 	        bm.compress(Bitmap.CompressFormat.PNG, 100, stream);

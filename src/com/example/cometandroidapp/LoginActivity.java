@@ -15,6 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.R.menu;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -42,6 +43,7 @@ public class LoginActivity extends Activity {
 	TextView tv1;
 	Button login;
 	String email = "pittcomet@gmail.com";
+	String password = "anonymoususer";
 	public static String par ="com.example.cometandroidapp.Talk";
 	private boolean isNetworkAvailable() {
 	    ConnectivityManager connectivityManager 
@@ -65,45 +67,42 @@ public class LoginActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		
 		//if below condition true then user wants to close the application
-      
 		if(!isNetworkAvailable()){
 		    showAlertDialog(LoginActivity.this, "No Internet Connection!",
                     "You don't have internet connection. Please switch on the internet connection and try again.", false);
-		} else {
-			
-		setContentView(R.layout.activity_login);
-		et1 = (EditText) findViewById(R.id.editText1);
-		et2 = (EditText) findViewById(R.id.editText2);
-		login = (Button) findViewById(R.id.button1);
-		login.setOnClickListener( new View.OnClickListener() {
-			
+		} else {	
+			setContentView(R.layout.activity_login);
+			et1 = (EditText) findViewById(R.id.editText1);
+			et2 = (EditText) findViewById(R.id.editText2);
+			login = (Button) findViewById(R.id.button1);
+			login.setOnClickListener( new View.OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				email = et1.getText().toString();
-				String pass = et2.getText().toString();
-				new Comet().execute(email,pass);
-			}
-		});
+				public void onClick(View v) {
+					email = et1.getText().toString();
+					password = et2.getText().toString();
+					new Comet().execute(email,password);
+				}
+			});	 
 		}
 	}
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
+		MenuItem item = menu.findItem(R.id.logout);
+	    item.setVisible(false);
 		return true;
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 	     super.onOptionsItemSelected(item);
-	     switch(item.getItemId()){
+	     switch(item.getItemId()){	
 	     case R.id.about:
 	    	 aboutMenuitem();
 	    	 break;
 	     case R.id.action_settings:
 	    	 actionsettings();
-	    	 break;
+	    	 break;	
 	     }   
 		return true;
 	}
@@ -185,6 +184,7 @@ public class LoginActivity extends Activity {
 			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
 
 				TALK_OBJECT.setEmail(email);
+				TALK_OBJECT.setPassword(password);
 			    Intent intent = new Intent(LoginActivity.this, Activity1.class);
 			    intent.putExtra(OBJECT, TALK_OBJECT);
 		        startActivity(intent);

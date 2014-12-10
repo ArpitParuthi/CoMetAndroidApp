@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,12 +19,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.*;
 
 public class Activity1 extends Activity  {
@@ -33,8 +30,9 @@ public class Activity1 extends Activity  {
 	public final static String OBJECT = "com.example.cometandroidapp.object1";
 	ImageView iv;
 	Bitmap bm;
-	String url = "";
-	
+	Button b1, b2;
+	String link = "";
+	byte[] bytes;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -47,7 +45,7 @@ public class Activity1 extends Activity  {
 					startActivityForResult(intent,0);	
 				}
 			});
-			Button b2 = (Button) findViewById(R.id.next);
+			b2= (Button) findViewById(R.id.next);
 			b2.setVisibility(View.GONE);
 			TALK_OBJECT = (Talk)getIntent().getParcelableExtra(LoginActivity.OBJECT);
 	}
@@ -86,21 +84,16 @@ public class Activity1 extends Activity  {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-		}).show(); 
-		
+		}).show(); 	
 	}
 	
-	private void logout(){
-		
+	private void logout(){	
 		Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
-		return;
-		
-		
+		return;	
 	}
 
 	private void aboutMenuitem() {
@@ -115,8 +108,7 @@ public class Activity1 extends Activity  {
 				// TODO Auto-generated method stub
 				
 			}
-		}).show(); 
-		
+		}).show(); 	
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -126,19 +118,9 @@ public class Activity1 extends Activity  {
 			iv.setImageBitmap(bm);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();  
 			bm.compress(Bitmap.CompressFormat.PNG,100, baos);
-			final byte[] bytes = baos.toByteArray();
+			bytes = baos.toByteArray();
 			String imageEncoded = Base64.encodeToString(bytes,Base64.DEFAULT);
 			new Imgur().execute(imageEncoded);
-			Button b2 = (Button) findViewById(R.id.next);
-			b2.setVisibility(View.VISIBLE);
-			b2.setOnClickListener (new OnClickListener() {
-				public void onClick(View v) {
-					Intent intent = new Intent(Activity1.this,Activity2.class);
-					intent.putExtra("image", bytes);
-					intent.putExtra(OBJECT, TALK_OBJECT);
-					startActivity(intent);	
-				}
-			});
 		}
 	}
 	
@@ -147,7 +129,6 @@ public class Activity1 extends Activity  {
 		protected String doInBackground(String... params) {
 			String Image = params[0];
 			String key = "8ca9d84ac6bcf3a";
-			String urlLink = "";
 			try {
 				URL url = new URL("https://api.imgur.com/3/image");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -174,27 +155,40 @@ public class Activity1 extends Activity  {
 				wr.close();
 				rd.close();
 				JSONObject finalResult = new JSONObject(stb.toString());
-				urlLink = finalResult.getJSONObject("data").getString("link");
+				link = finalResult.getJSONObject("data").getString("link");
 				
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			return urlLink;
+			return link;
 		}
 		
 		@Override
 	    protected void onPostExecute(String output) {
-				url = output;
-		        TALK_OBJECT.setUrl(url);
+				link = output;
+		        TALK_OBJECT.setUrl(link);
+		        Log.e("url",TALK_OBJECT.getUrl());
+		        b2 = (Button) findViewById(R.id.next);
+		        b1 = (Button) findViewById(R.id.take);
+		        b1.setText("Retake");
+		        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)b1.getLayoutParams();
+		        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		        b1.setLayoutParams(params);
+				b2.setVisibility(View.VISIBLE);
+		        b2.setOnClickListener (new OnClickListener() {
+					public void onClick(View v) {
+						Intent intent = new Intent(Activity1.this,Activity2.class);
+						intent.putExtra("image", bytes);
+						intent.putExtra(OBJECT, TALK_OBJECT);
+						startActivity(intent);	
+					}
+		        });
 	    }
 	}
 	
-	
-	public void onBackPressed(){
-		
+	public void onBackPressed(){	
 		return;
-	}
-	
+	}	
 }
 
 

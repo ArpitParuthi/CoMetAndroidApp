@@ -119,9 +119,7 @@ public class Activity3 extends Activity implements OnClickListener{
 		Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
-		return;
-		
-		
+		return;	
 	}
 	
 	private void actionsettings() {
@@ -137,11 +135,9 @@ public class Activity3 extends Activity implements OnClickListener{
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-		}).show(); 
-		
+		}).show(); 	
 	}
 
 	private void aboutMenuitem() {
@@ -196,50 +192,39 @@ public class Activity3 extends Activity implements OnClickListener{
 		}
 	}
 	
-	public void PacelableMethod(){  	
+	public void PacelableMethod(){ 
 		TALK_OBJECT.setLocation(ac1.getText().toString());
 		TALK_OBJECT.setDate(et2.getText().toString());
 		TALK_OBJECT.setTimeFrom(et3.getText().toString());
 		TALK_OBJECT.setTimeTo(et4.getText().toString());
-	    Intent intent = new Intent(Activity3.this,Activity4.class); 
-	    intent.putExtra(OBJECT, TALK_OBJECT);
-	    startActivity(intent);  
 	    }
-	
 	@Override
 	public void onClick(View v) {
-		
 		if(ac1.getText().toString().trim().equals("")){
-			
-		 Context context = getApplicationContext();
-   		 CharSequence text = "Please enter valid location";
-   		 int duration = Toast.LENGTH_SHORT;
-   		 DisplayMetrics metrics = new DisplayMetrics();
-   		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
-   		 int height = metrics.heightPixels;
-   		 //set the text and duration of alert message
-   		 Toast toast = Toast.makeText(context, text, duration);
-   		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 200 , height-900);
-   		 toast.show();
-   		 return;
-   		 
-		}else if(et2.getText().toString().trim().equals("")){
-			
-		 Context context = getApplicationContext();
-  		 CharSequence text = "Please select valid date";
-  		 int duration = Toast.LENGTH_SHORT;
-  		 DisplayMetrics metrics = new DisplayMetrics();
-  		 getWindowManager().getDefaultDisplay().getMetrics(metrics);
-  		 int height = metrics.heightPixels;
-  		 //set the text and duration of alert message
-  		 Toast toast = Toast.makeText(context, text, duration);
-  		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 250 , height-900);
-  		 toast.show();
-  		 return;
-			
-			
-		}else if(et3.getText().toString().trim().equals("")){
-			
+			Context context = getApplicationContext();
+   		 	CharSequence text = "Please enter valid location";
+   		 	int duration = Toast.LENGTH_SHORT;
+   		 	DisplayMetrics metrics = new DisplayMetrics();
+   		 	getWindowManager().getDefaultDisplay().getMetrics(metrics);
+   		 	int height = metrics.heightPixels;
+   		 	//set the text and duration of alert message
+   		 	Toast toast = Toast.makeText(context, text, duration);
+   		 	toast.setGravity(Gravity.TOP|Gravity.LEFT , 200 , height-900);
+   		 	toast.show();
+   		 	return;
+		} else if(et2.getText().toString().trim().equals("")){	
+			Context context = getApplicationContext();
+			CharSequence text = "Please select valid date";
+			int duration = Toast.LENGTH_SHORT;
+			DisplayMetrics metrics = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(metrics);
+			int height = metrics.heightPixels;
+			//set the text and duration of alert message
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.setGravity(Gravity.TOP|Gravity.LEFT , 250 , height-900);
+			toast.show();
+			return;	
+		} else if(et3.getText().toString().trim().equals("")){
 			 Context context = getApplicationContext();
 	   		 CharSequence text = "Please enter start time of talk";
 	   		 int duration = Toast.LENGTH_SHORT;
@@ -250,11 +235,8 @@ public class Activity3 extends Activity implements OnClickListener{
 	   		 Toast toast = Toast.makeText(context, text, duration);
 	   		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 175 , height-900);
 	   		 toast.show();
-	   		 return;
-			
-			
+	   		 return;	
 		}else if(et4.getText().toString().trim().equals("")){
-			
 			 Context context = getApplicationContext();
 	   		 CharSequence text = "Please enter end time of talk";
 	   		 int duration = Toast.LENGTH_SHORT;
@@ -265,14 +247,30 @@ public class Activity3 extends Activity implements OnClickListener{
 	   		 Toast toast = Toast.makeText(context, text, duration);
 	   		 toast.setGravity(Gravity.TOP|Gravity.LEFT , 175 , height-900);
 	   		 toast.show();
-	   		 return;
-			
-			
-		}else{
-			
+	   		 return;	
+		} else{
 			PacelableMethod(); 
-			
+			DisplayAlert();		
 		}
+	}
+	
+	public void DisplayAlert(){
+		new AlertDialog.Builder(this).setMessage("Do you wish to submit?")  
+        .setTitle("Confirmation")  
+        .setCancelable(true)
+        .setNegativeButton("No", new DialogInterface.OnClickListener() {  
+           public void onClick(DialogInterface dialog, int whichButton){
+        	    dialog.dismiss();
+           }  
+           })  
+        .setPositiveButton("Yes",  new DialogInterface.OnClickListener() {  
+           public void onClick(DialogInterface dialog, int whichButton){
+        	   Intent intent = new Intent(Activity3.this,Activity4.class); 
+       	    intent.putExtra(OBJECT, TALK_OBJECT);
+       	    startActivity(intent);  
+           }  
+           })  
+        .show(); 
 	}
 	
 }

@@ -12,7 +12,7 @@ import android.os.Parcelable;
 	    private String date;
 	    private String tfrom;
 	    private String tto;
-	    private String affiliation = "NA";
+	    private String password;
 	    private String email;
 	    
 	    public String getUrl() {  
@@ -21,6 +21,14 @@ import android.os.Parcelable;
 	    
 	    public void setUrl(String url) {  
 	    	this.url = url;  
+	    }
+	    
+	    public String getPassword() {  
+	    	return password;  
+	    }  
+	    
+	    public void setPassword(String password) {  
+	    	this.password = password;  
 	    }
 	    
 	    public String getEmail() {  
@@ -100,6 +108,7 @@ import android.os.Parcelable;
 	    	     md.tfrom = source.readString(); 
 	    	     md.tto= source.readString(); 
 	    	     md.email=source.readString();
+	    	     md.password=source.readString();
 	    	     return md;  
 	    	 }  
 	    	 
@@ -123,6 +132,7 @@ import android.os.Parcelable;
 			 parcel.writeString(tfrom);
 			 parcel.writeString(tto); 
 			 parcel.writeString(email);
+			 parcel.writeString(password);
 		} 
 
 		 private String formatTime(String time) {
