@@ -14,6 +14,15 @@ import android.os.Parcelable;
 	    private String tto;
 	    private String password;
 	    private String email;
+	    private String name;
+	    
+	    public String getName() {  
+	    	return name;  
+	    }  
+	    
+	    public void setName(String name) {  
+	    	this.name = name;  
+	    }
 	    
 	    public String getUrl() {  
 	    	return url;  
@@ -109,6 +118,7 @@ import android.os.Parcelable;
 	    	     md.tto= source.readString(); 
 	    	     md.email=source.readString();
 	    	     md.password=source.readString();
+	    	     md.name=source.readString();
 	    	     return md;  
 	    	 }  
 	    	 
@@ -133,6 +143,7 @@ import android.os.Parcelable;
 			 parcel.writeString(tto); 
 			 parcel.writeString(email);
 			 parcel.writeString(password);
+			 parcel.writeString(name);
 		} 
 
 		 private String formatTime(String time) {

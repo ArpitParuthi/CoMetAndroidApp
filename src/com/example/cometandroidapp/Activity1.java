@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
@@ -33,21 +34,28 @@ public class Activity1 extends Activity  {
 	Button b1, b2;
 	String link = "";
 	byte[] bytes;
+	TextView tv1,tv2;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 			setContentView(R.layout.activity1);
 			iv = (ImageView)findViewById(R.id.imageView1);
+			tv1 = (TextView)findViewById(R.id.textView1);
+			tv2 = (TextView)findViewById(R.id.textView2);
+			TALK_OBJECT = getIntent().getParcelableExtra(LoginActivity.OBJECT);
+				tv2.setText("Hello, "+TALK_OBJECT.getName()+"!");
+			
 			Button b = (Button) findViewById(R.id.take);
 			b.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
+					tv1.setVisibility(View.GONE);
+					tv2.setVisibility(View.GONE);
 					Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 					startActivityForResult(intent,0);	
 				}
 			});
 			b2= (Button) findViewById(R.id.next);
 			b2.setVisibility(View.GONE);
-			TALK_OBJECT = (Talk)getIntent().getParcelableExtra(LoginActivity.OBJECT);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -100,7 +108,8 @@ public class Activity1 extends Activity  {
 		// TODO Auto-generated method stub
 		new AlertDialog.Builder(this)
 		.setTitle("About")
-		.setMessage("Develpers: Arpit, Jasmin, Vivek, Somi")
+		.setMessage(Html.fromHtml("<b><u>Developers</b></u><br>Arpit Paruthi<br>Jasmin Dhamelia<br>Somi Laad<br>Vivekchander Chandhira Sekaran"
+				+ "<br><b><u>Contact</b></u>:<br> pittcomet@gmail.com"))
 		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
 			
 			@Override

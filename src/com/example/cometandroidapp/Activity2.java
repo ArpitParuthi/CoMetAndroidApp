@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -166,7 +167,8 @@ public class Activity2 extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		new AlertDialog.Builder(this)
 		.setTitle("About")
-		.setMessage("Develpers: Arpit, Jasmin, Vivek, Somi")
+		.setMessage(Html.fromHtml("<b><u>Developers</b></u><br>Arpit Paruthi<br>Jasmin Dhamelia<br>Somi Laad<br>Vivekchander Chandhira Sekaran"
+				+ "<br><b><u>Contact</b></u>:<br> pittcomet@gmail.com"))
 		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -174,8 +176,7 @@ public class Activity2 extends Activity implements OnClickListener {
 				// TODO Auto-generated method stub
 				
 			}
-		}).show(); 
-		
+		}).show(); 	
 	}
 	
 public void onBackPressed(){	

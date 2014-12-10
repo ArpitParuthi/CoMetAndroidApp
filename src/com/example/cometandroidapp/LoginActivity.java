@@ -25,6 +25,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -43,6 +44,7 @@ public class LoginActivity extends Activity {
 	TextView tv1;
 	Button login;
 	String email = "pittcomet@gmail.com";
+	String name = "";
 	String password = "anonymoususer";
 	public static String par ="com.example.cometandroidapp.Talk";
 	private boolean isNetworkAvailable() {
@@ -111,7 +113,8 @@ public class LoginActivity extends Activity {
 		// TODO Auto-generated method stub
 		new AlertDialog.Builder(this)
 		.setTitle("About")
-		.setMessage("Develpers: Arpit, Jasmin, Somi, Vivek")
+		.setMessage(Html.fromHtml("<b><u>Developers</b></u><br>Arpit Paruthi<br>Jasmin Dhamelia<br>Somi Laad<br>Vivekchander Chandhira Sekaran"
+				+ "<br><b><u>Contact</b></u>:<br> pittcomet@gmail.com"))
 		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -119,8 +122,7 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 			}
-		}).show(); 
-		
+		}).show(); 	
 	}
 	
 	private void actionsettings() {
@@ -182,9 +184,10 @@ public class LoginActivity extends Activity {
 	    protected void onPostExecute(String output) {
 	        
 			if(output.substring(55,output.length()-17).substring(0,2).equals("OK")){
-
+				name = output.substring(61,output.length()-17);
 				TALK_OBJECT.setEmail(email);
 				TALK_OBJECT.setPassword(password);
+				TALK_OBJECT.setName(name);
 			    Intent intent = new Intent(LoginActivity.this, Activity1.class);
 			    intent.putExtra(OBJECT, TALK_OBJECT);
 		        startActivity(intent);

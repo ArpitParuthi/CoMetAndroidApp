@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="first">You can use the three dots on the top-right for help on
+	    any page! Otherwise, take a picture and fill in details about the event.</string>
     <string name="action_settings">Help</string>
     <string name="about">About</string>
     <string name="logout">Log Out</string>
@@ -107,12 +108,11 @@
         <item>Applied Research Center</item>
         <item>Wesley W. Posvar Hall</item>
     </string-array>
-
-    <string name="title_activity_activity2">Activity2</string>
-    <string name="title_activity_activity3">Activity3</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_login">A</string>
-    <string name="app_name">Activity1</string>
-    <string name="title_activity_activity4">Activity4</string>
+	<string name="title_activity_activity1">Home</string>
+    <string name="title_activity_activity2">Details Form</string>
+    <string name="title_activity_activity3">Details Form</string>
+    <string name="title_activity_activity4">Feedback</string>
+    <string name="title_activity_login">Post a Talk</string>
+    
 
 </resources>

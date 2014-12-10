@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:textColor="#F00"
+        android:textSize="22sp"
         android:text="@string/anonymous"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:onClick="fetch"
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="70dp"
         android:text="Login" />
 
     <EditText
@@ -66,16 +67,18 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/editText1"
         android:layout_centerHorizontal="true"
-        android:text="Username"
+        android:text="Email"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
         android:text="@string/login"
+        android:textSize="30sp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#F00" />
 
