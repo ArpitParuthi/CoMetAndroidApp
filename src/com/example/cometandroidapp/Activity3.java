@@ -92,9 +92,9 @@ public class Activity3 extends Activity implements OnClickListener{
 	
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 				if(x=="1")
-					et3.setText(hourOfDay+": "+minute);
+					et3.setText(hourOfDay+":"+minute);
 				else if (x=="2")
-					et4.setText(hourOfDay+": "+minute);	
+					et4.setText(hourOfDay+":"+minute);	
 			}
 	}
 	
@@ -117,8 +117,8 @@ public class Activity3 extends Activity implements OnClickListener{
 	        Talk talk = new Talk();  
 	        talk.setLocation(ac1.getText().toString());
 	        talk.setDate(et2.getText().toString());
-	        talk.setTimeFrom(et3.getText().toString());
-	        talk.setTimeTo(et4.getText().toString());
+	       talk.setTimeFrom(et3.getText().toString());
+	       talk.setTimeTo(et4.getText().toString());
 	        Intent mIntent = new Intent(Activity3.this,Activity4.class);  
 	        Bundle mBundle = new Bundle();  
 	        mBundle.putParcelable(par, talk);  

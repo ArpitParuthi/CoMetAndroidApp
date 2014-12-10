@@ -7,8 +7,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
 import org.json.JSONObject;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -50,11 +55,63 @@ public class Activity1 extends Activity  {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	     super.onOptionsItemSelected(item);
+	     switch(item.getItemId()){
+	     case R.id.about:
+	    	 aboutMenuitem();
+	    	 break;
+	     case R.id.action_settings:
+	    	 actionsettings();
+	    	 break;
+	     }   
+		return true;
+	}
+	
+	private void actionsettings() {
+		// TODO Auto-generated method stub
+		new AlertDialog.Builder(this)
+		.setTitle("Help")
+		.setMessage("With this app you can post an event to CoMeT! Here's how:\n"
+				+ "1. Login with your CoMeT account or post as an anonymous user\n"
+				+ "2. Take a picture\n"
+				+ "3. Add details about the Event\n"
+				+ "4. Post it to the CoMeT server\n"
+				+ "5. Receive a confirmation")
+		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		}).show(); 
+		
+	}
+
+	private void aboutMenuitem() {
+		// TODO Auto-generated method stub
+		new AlertDialog.Builder(this)
+		.setTitle("About")
+		.setMessage("Develpers: Arpit, Jasmin, Vivek, Somi")
+		.setNeutralButton("OK",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		}).show(); 
+		
+	}
+
+	public void showAlertDialog(Context context, String title, String message, Boolean status) {
+		
+		 AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+		 alertDialog.setTitle("Help");
+		 alertDialog.setMessage("sdfdsfdsf");
+		 alertDialog.show();
+		
+		
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
