@@ -75,7 +75,7 @@ import android.os.Parcelable;
 	   		 return tfrom;  
 	   	 }  
 	   	 
-	   	 public void setTimeFrom( String tfrom) {  
+	   	 public void setTimeFrom(String tfrom) {  
 	   		 this.tfrom = formatetime(tfrom); 
 	   	 }
 	   			    
@@ -127,9 +127,9 @@ import android.os.Parcelable;
 			 String ret = null;
 			 String[] splitString = time.split(":");
 			 int hour = Integer.parseInt(splitString[0]);
-			 if(hour ==0) {
+			 if(hour == 00) {
 				 hour=hour+12;
-				 ret = time+" AM";
+				 ret = hour+":"+splitString[1]+" AM";
 			 } else if(hour < 12){
 				 ret = time+" AM";
 			 } else if(hour >12){
